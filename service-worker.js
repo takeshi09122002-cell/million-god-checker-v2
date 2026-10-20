@@ -1,4 +1,4 @@
-const CACHE_NAME = "godcheck-v2";
+const CACHE_NAME = "godcheck-v3";
 
 const urlsToCache = [
   "./",
