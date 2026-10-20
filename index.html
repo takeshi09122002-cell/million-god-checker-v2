@@ -100,7 +100,7 @@ button{
         font-weight:bold;
     ">
 
-    ※シークレットモードだと履歴が残らないため注意
+    ※シークレットモードではデータが保存されません
 
 </div>
 
@@ -352,6 +352,10 @@ button{
         1/0
     </div>
 
+    <div class="note" style="color:#d32f2f;">
+    ※初当たりGG消化後よりカウントする事
+    </div>
+
     <div class="note">
         (推定値)設定4：1/160
         設定5：1/140
@@ -570,7 +574,7 @@ function updateRates(){
     );
 
     const normalGame =
-    game - firstHit - (gg * 55);
+    game - firstHit - (gg * 50);
 
     if(
         bell > 0 &&

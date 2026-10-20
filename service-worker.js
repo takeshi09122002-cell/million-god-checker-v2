@@ -1,4 +1,4 @@
-const CACHE_NAME = "godcheck-v6";
+const CACHE_NAME = "godcheck-v7";
 
 self.addEventListener("install", event => {
     self.skipWaiting();
