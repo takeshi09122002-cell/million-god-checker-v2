@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ミリオンゴッド-設定判別</title>
+
+<link rel="manifest" href="manifest.json">
+
+<style>
+
+body{
+    font-family:sans-serif;
+    background:#f5f5f5;
+    margin:0;
+    padding:15px;
+}
+
+h1{
+    text-align:center;
+    font-size:24px;
+}
+
+.card{
+    background:#fff;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:12px;
+    box-shadow:0 2px 5px rgba(0,0,0,.1);
+}
+
+.title{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.counter{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+button{
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:10px;
+    background:#1976d2;
+    color:#fff;
+    font-size:24px;
+}
+
+.numberInput{
+    width:90px;
+    height:40px;
+    text-align:center;
+    font-size:20px;
+}
+
+.rate{
+    margin-top:8px;
+    font-weight:bold;
+    color:#d32f2f;
+}
+
+.note{
+    margin-top:4px;
+    font-size:12px;
+    color:#666;
+}
+
+#resetBtn{
+    width:130px;
+    height:40px;
+    background:#d32f2f;
+    font-size:12px;
+}
+
+.sectionLabel{
+    margin-top:10px;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>ミリオンゴッド-設定判別</h1>
+
+<div style="text-align:center;margin-bottom:15px;">
+    <button id="resetBtn">
+        データリセット
+    </button>
+</div>
+
+<div class="card">
+
+    <div class="title">
+        G数
+    </div>
+
+    <input
+        id="game"
+        class="numberInput"
+        type="number">
+
+</div>
+
+<div class="card">
+
+    <div class="title">
+        初当たりG数
+    </div>
+
+    <input
+        id="firstHit"
+        class="numberInput"
+        type="number">
+
+</div>
+
+<div class="card">
+
+    <div class="title">
+        GG数
+    </div>
+
+    <div class="counter">
+
+        <button
+            data-target="gg"
+            data-delta="-1">
+            -
+        </button>
+
+        <input
+            id="gg"
+            class="numberInput"
+            type="number"
+            value="0">
+
+        <button
+            data-target="gg"
+            data-delta="1">
+            +
+        </button>
+
+    </div>
+
+</div>
+
+<div class="card">
+
+    <div class="title">
+        リプ3
+    </div>
+
+    <div class="sectionLabel">
+        カウント
+    </div>
+
+    <div class="counter">
+
+        <button
+            data-target="rep3"
+            data-delta="-1">
+            -
+        </button>
+
+        <input
+            id="rep3"
+            class="numberInput"
+            type="number"
+            value="0">
+
+        <button
+            data-target="rep3"
+            data-delta="1">
+            +
+        </button>
+
+    </div>
+
+    <div class="sectionLabel">
+        HIT
+    </div>
+
+    <div class="counter">
+
+        <button
+            data-target="rep3hit"
+            data-delta="-1">
+            -
+        </button>
+
+        <input
+            id="rep3hit"
+            class="numberInput"
+            type="number"
+            value="0">
+
+        <button
+            data-target="rep3hit"
+            data-delta="1">
+            +
+        </button>
+
+    </div>
+
+    <div
+        id="rep3Rate"
+        class="rate">
+        0%
+    </div>
+
+    <div class="note">
+        (推定値)設定4：20%
+        設定5：5%
+        設定6：33%
+    </div>
+
+</div>
+
+<div class="card">
+
+    <div class="title">
+        リプ4
+    </div>
+
+    <div class="sectionLabel">
+        カウント
+    </div>
+
+    <div class="counter">
+
+        <button
+            data-target="rep4"
+            data-delta="-1">
+            -
+        </button>
+
+        <input
+            id="rep4"
+            class="numberInput"
+            type="number"
+            value="0">
+
+        <button
+            data-target="rep4"
+            data-delta="1">
+            +
+        </button>
+
+    </div>
+
+    <div class="sectionLabel">
+        HIT
+    </div>
+
+    <div class="counter">
+
+        <button
+            data-target="rep4hit"
+            data-delta="-1">
+            -
+        </button>
+
+        <input
+            id="rep4hit"
+            class="numberInput"
+            type="number"
+            value="0">
+
+        <button
+            data-target="rep4hit"
+            data-delta="1">
+            +
+        </button>
+
+    </div>
+
+    <div
+        id="rep4Rate"
+        class="rate">
+        0%
+    </div>
+
+    <div class="note">
+        (推定値)設定4：60%
+        設定5：40%
+        設定6：70%
+    </div>
+
+</div>
+
+<div class="card">
+
+    <div class="title">
+        通常時ベルナビ
+    </div>
+
+    <div class="counter">
+
+        <button
+            data-target="bell"
+            data-delta="-1">
+            -
+        </button>
+
+        <input
+            id="bell"
+            class="numberInput"
+            type="number"
+            value="0">
+
+        <button
+            data-target="bell"
+            data-delta="1">
+            +
+        </button>
+
+    </div>
+
+    <div
+        id="bellRate"
+        class="rate">
+        1/0
+    </div>
+
+    <div class="note">
+        (推定値)設定4：1/160
+        設定5：1/140
+        設定6：1/110
+    </div>
+
+</div>
+
+<div class="card">
+
+    <div class="title">
+        下段黄7A
+    </div>
+
+    <div class="sectionLabel">
+        通常時
+    </div>
+
+    <div class="counter">
+
+        <button
+            data-target="yellow7Normal"
+            data-delta="-1">
+            -
+        </button>
+
+        <input
+            id="yellow7Normal"
+            class="numberInput"
+            type="number"
+            value="0">
+
+        <button
+            data-target="yellow7Normal"
+            data-delta="1">
+            +
+        </button>
+
+    </div>
+
+    <div class="sectionLabel">
+        AT中
+    </div>
+
+    <div class="counter">
+
+        <button
+            data-target="yellow7AT"
+            data-delta="-1">
+            -
+        </button>
+
+        <input
+            id="yellow7AT"
+            class="numberInput"
+            type="number"
+            value="0">
+
+        <button
+            data-target="yellow7AT"
+            data-delta="1">
+            +
+        </button>
+
+    </div>
+
+    <div
+        style="
+        margin-top:10px;
+        font-weight:bold;">
+        合計：
+        <span id="yellow7Total">
+            0
+        </span>
+    </div>
+
+    <div
+        id="yellowRateAT"
+        class="rate">
+        AT中：1/0
+    </div>
+
+    <div
+        id="yellowRateNormal"
+        class="rate">
+        通常時：1/0
+    </div>
+
+    <div class="note">
+        (AT中：設定4：1/45
+        設定5：1/40
+        設定6：1/35)
+    </div>
+
+    <div class="note">
+        (通常時：設定4：1/38
+        設定5：1/36
+        設定6：1/35)
+    </div>
+
+</div>
+
+<script>
+
+const ids = [
+    "gg",
+    "rep3",
+    "rep3hit",
+    "rep4",
+    "rep4hit",
+    "bell",
+    "yellow7Normal",
+    "yellow7AT"
+];
+
+let data =
+JSON.parse(
+    localStorage.getItem("godData")
+) || {};
+
+function loadData(){
+
+    document.getElementById("game").value =
+    data.game || "";
+
+    document.getElementById("firstHit").value =
+    data.firstHit || "";
+
+    ids.forEach(id => {
+
+        document.getElementById(id).value =
+        data[id] || 0;
+
+    });
+
+}
+
+function saveData(){
+
+    ids.forEach(id => {
+
+        data[id] =
+        Number(
+            document.getElementById(id).value || 0
+        );
+
+    });
+
+    data.game =
+    document.getElementById("game").value;
+
+    data.firstHit =
+    document.getElementById("firstHit").value;
+
+    localStorage.setItem(
+        "godData",
+        JSON.stringify(data)
+    );
+
+}
+
+function updateRates(){
+
+    saveData();
+
+    const rep3 =
+    Number(
+        document.getElementById("rep3").value || 0
+    );
+
+    const rep3hit =
+    Number(
+        document.getElementById("rep3hit").value || 0
+    );
+
+    const rep4 =
+    Number(
+        document.getElementById("rep4").value || 0
+    );
+
+    const rep4hit =
+    Number(
+        document.getElementById("rep4hit").value || 0
+    );
+
+    document.getElementById("rep3Rate")
+    .textContent =
+    rep3 > 0
+    ? (rep3hit / rep3 * 100).toFixed(1) + "%"
+    : "0%";
+
+    document.getElementById("rep4Rate")
+    .textContent =
+    rep4 > 0
+    ? (rep4hit / rep4 * 100).toFixed(1) + "%"
+    : "0%";
+
+    const game =
+    Number(
+        document.getElementById("game").value || 0
+    );
+
+    const firstHit =
+    Number(
+        document.getElementById("firstHit").value || 0
+    );
+
+    const gg =
+    Number(
+        document.getElementById("gg").value || 0
+    );
+
+    const bell =
+    Number(
+        document.getElementById("bell").value || 0
+    );
+
+    const normalGame =
+    game - firstHit - (gg * 55);
+
+    if(
+        bell > 0 &&
+        normalGame > 0
+    ){
+        document.getElementById(
+            "bellRate"
+        ).textContent =
+        "1/" +
+        Math.round(
+            normalGame / bell
+        );
+    }else{
+        document.getElementById(
+            "bellRate"
+        ).textContent =
+        "1/0";
+    }
+
+    const yellowNormal =
+    Number(
+        document.getElementById(
+            "yellow7Normal"
+        ).value || 0
+    );
+
+    const yellowAT =
+    Number(
+        document.getElementById(
+            "yellow7AT"
+        ).value || 0
+    );
+
+    document.getElementById(
+        "yellow7Total"
+    ).textContent =
+    yellowNormal + yellowAT;
+
+    if(
+        yellowAT > 0 &&
+        gg > 0
+    ){
+
+        document.getElementById(
+            "yellowRateAT"
+        ).textContent =
+        "AT中：1/" +
+        Math.round(
+            (gg * 50) / yellowAT
+        );
+
+    }else{
+
+        document.getElementById(
+            "yellowRateAT"
+        ).textContent =
+        "AT中：1/0";
+
+    }
+
+    if(
+        yellowNormal > 0 &&
+        normalGame > 0
+    ){
+
+        document.getElementById(
+            "yellowRateNormal"
+        ).textContent =
+        "通常時：1/" +
+        Math.round(
+            normalGame / yellowNormal
+        );
+
+    }else{
+
+        document.getElementById(
+            "yellowRateNormal"
+        ).textContent =
+        "通常時：1/0";
+
+    }
+
+}
+
+loadData();
+
+document
+.querySelectorAll("input")
+.forEach(input => {
+
+    input.addEventListener(
+        "input",
+        updateRates
+    );
+
+});
+
+document
+.querySelectorAll(
+    "button[data-target]"
+)
+.forEach(btn => {
+
+    let timer;
+
+    const changeValue = amount => {
+
+        const target =
+        document.getElementById(
+            btn.dataset.target
+        );
+
+        let value =
+        Number(
+            target.value || 0
+        );
+
+        value += amount;
+
+        if(value < 0){
+            value = 0;
+        }
+
+        target.value = value;
+
+        updateRates();
+
+    };
+
+    btn.addEventListener(
+        "click",
+        () => {
+            changeValue(
+                Number(
+                    btn.dataset.delta
+                )
+            );
+        }
+    );
+
+    btn.addEventListener(
+        "touchstart",
+        () => {
+
+            timer =
+            setTimeout(() => {
+
+                changeValue(
+                    Number(
+                        btn.dataset.delta
+                    ) * 10
+                );
+
+            },500);
+
+        }
+    );
+
+    btn.addEventListener(
+        "touchend",
+        () => {
+            clearTimeout(timer);
+        }
+    );
+
+});
+
+document
+.getElementById("resetBtn")
+.addEventListener(
+    "click",
+    () => {
+
+        if(
+            !confirm(
+                "すべてのデータをリセットしますか？"
+            )
+        ){
+            return;
+        }
+
+        localStorage.removeItem(
+            "godData"
+        );
+
+        location.reload();
+
+    }
+);
+
+updateRates();
+
+if(
+    "serviceWorker"
+    in navigator
+){
+
+    navigator
+    .serviceWorker
+    .register(
+        "service-worker.js"
+    )
+    .then(() => {
+
+        console.log(
+            "SW登録成功"
+        );
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
